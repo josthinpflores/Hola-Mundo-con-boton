@@ -15,10 +15,19 @@
   
   <script>
   const boton = document.getElementById("btnWsp");
+  const textoOriginal = boton.innerText;
 
   boton.addEventListener("click", function() {
     alert("Te estoy redirigiendo a WhatsApp 👀");
     window.open("https://wa.me/51931225177", "_blank");
+  });
+  
+  boton.addEventListener("mouseover", function() {
+    boton.innerText = "Ahora cambié 😈";
+  });
+
+  boton.addEventListener("mouseout", function() {
+    boton.innerText = textoOriginal;
   });
   </script>
 </body>
