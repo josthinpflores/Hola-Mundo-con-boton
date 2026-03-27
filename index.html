@@ -11,9 +11,15 @@
 
   <h1>Hola Mundo</h1>
 
-  <a href="https://wa.me/51931225177" target="_blank">
-    <button>Ir a mi WhatsApp</button>
-  </a>
+  <button id="btnWsp">Ir a mi WhatsApp</button>
+  
+  <script>
+  const boton = document.getElementById("btnWsp");
 
+  boton.addEventListener("click", function() {
+    alert("Te estoy redirigiendo a WhatsApp 👀");
+    window.open("https://wa.me/51931225177", "_blank");
+  });
+  </script>
 </body>
 </html>
