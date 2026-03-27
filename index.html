@@ -13,14 +13,25 @@
 
   <button id="btnWsp">Ir a mi WhatsApp</button>
   
+  <ul id="resultado"></ul>
+  
   <script>
   const boton = document.getElementById("btnWsp");
   const textoOriginal = boton.innerText;
   
+  console.log("Estoy ejecutando el script 👀");
   fetch("http://localhost:3000/usuarios")
-    .then(res => res.text())
+    .then(res => res.json())
     .then(data => {
-      console.log("Respuesta del servidor:", data);
+      console.log("Datos recibidos:", data);
+	  const lista = document.getElementById("resultado");
+	  lista.innerHTML = "";
+	  
+	  data.forEach(nombre => {
+		const li = document.createElement("li");
+		li.innerText = nombre;
+		lista.appendChild(li);
+		});
     });
 	
   boton.addEventListener("click", function() {
@@ -36,8 +47,5 @@
     boton.innerText = textoOriginal;
   });
   </script>
-  <script>
-  
-</script>
 </body>
 </html>
