@@ -16,7 +16,13 @@
   <script>
   const boton = document.getElementById("btnWsp");
   const textoOriginal = boton.innerText;
-
+  
+  fetch("http://localhost:3000/usuarios")
+    .then(res => res.text())
+    .then(data => {
+      console.log("Respuesta del servidor:", data);
+    });
+	
   boton.addEventListener("click", function() {
     alert("Te estoy redirigiendo a WhatsApp 👀");
     window.open("https://wa.me/51931225177", "_blank");
@@ -30,5 +36,8 @@
     boton.innerText = textoOriginal;
   });
   </script>
+  <script>
+  
+</script>
 </body>
 </html>
