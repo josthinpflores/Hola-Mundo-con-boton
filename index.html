@@ -38,7 +38,7 @@
   });
   
   function cargarUsuarios() {
-    fetch("http://https://backend-holamundo.onrender.com/usuarios")
+    fetch("https://backend-holamundo.onrender.com/usuarios")
       .then(res => res.json())
       .then(data => {
         const lista = document.getElementById("resultado");
@@ -55,7 +55,7 @@
   function agregarUsuario() {
     const nombre = document.getElementById("nombre").value;
 
-    fetch("http://https://backend-holamundo.onrender.com/usuarios", {
+    fetch("https://backend-holamundo.onrender.com/usuarios", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
