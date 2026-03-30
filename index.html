@@ -13,16 +13,10 @@
 
   <button id="btnWsp">Ir a mi WhatsApp</button>
   
-  .map(usuario => `
-  <li>
-    ${usuario.nombre}
-    <button onclick="eliminarUsuario('${usuario._id}')">❌</button>
-  </li>
-`)
-  
   <input type="text" id="nombre" placeholder="Escribe un nombre">
   <button onclick="agregarUsuario()">Agregar</button>
   
+  <ul id="resultado"></ul>
   <script>
   const boton = document.getElementById("btnWsp");
   const textoOriginal = boton.innerText;
@@ -74,11 +68,11 @@
   }
   
   function eliminarUsuario(id) {
-  fetch("https://backend-holamundo.onrender.com/usuarios", {
+  fetch("https://backend-holamundo.onrender.com/usuarios/${id}", {
     method: "DELETE"
 	})
   .then(() => {
-    cargarUsuarios(); // 👈 recarga la lista
+    cargarUsuarios();
 	});
   }
 
