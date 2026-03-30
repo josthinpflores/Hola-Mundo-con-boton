@@ -13,7 +13,12 @@
 
   <button id="btnWsp">Ir a mi WhatsApp</button>
   
-  <ul id="resultado"></ul>
+  .map(usuario => `
+  <li>
+    ${usuario.nombre}
+    <button onclick="eliminarUsuario('${usuario._id}')">❌</button>
+  </li>
+`)
   
   <input type="text" id="nombre" placeholder="Escribe un nombre">
   <button onclick="agregarUsuario()">Agregar</button>
@@ -42,14 +47,15 @@
       .then(res => res.json())
       .then(data => {
         const lista = document.getElementById("resultado");
-        lista.innerHTML = "";
-
-        data.forEach(nombre => {
-          const li = document.createElement("li");
-          li.innerText = nombre.nombre;
-          lista.appendChild(li);
-        });
-      });
+        lista.innerHTML = data
+        .map(usuario => `
+          <li>
+            ${usuario.nombre}
+            <button onclick="eliminarUsuario('${usuario._id}')">❌</button>
+          </li>
+        `)
+        .join("");
+    });
   }
 
   function agregarUsuario() {
@@ -65,6 +71,15 @@
     .then(() => {
       cargarUsuarios(); // 🔥 refresca lista
     });
+  }
+  
+  function eliminarUsuario(id) {
+  fetch("https://backend-holamundo.onrender.com/usuarios", {
+    method: "DELETE"
+	})
+  .then(() => {
+    cargarUsuarios(); // 👈 recarga la lista
+	});
   }
 
   // 👉 carga inicial
