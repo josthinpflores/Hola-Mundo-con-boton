@@ -68,11 +68,17 @@
   }
   
   function eliminarUsuario(id) {
+  console.log("Intentando eliminar el usuario ", id);
   fetch("https://backend-holamundo.onrender.com/usuarios/${id}", {
     method: "DELETE"
 	})
-  .then(() => {
+  .then(res => res.text())
+  .then(data => {
+    console.log("Respuesta:", data);
     cargarUsuarios();
+	})
+  .catch(err => {
+    console.error("Error:", err);
 	});
   }
 
