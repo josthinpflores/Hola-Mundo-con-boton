@@ -3,39 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>Hola a Todos</title>
-
   <!-- Conectamos el CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
   <h1>Hola a todos</h1>
-
   <button id="btnWsp">Ir a mi WhatsApp</button>
-  
   <input type="text" id="nombre" placeholder="Escribe un nombre">
   <button onclick="agregarUsuario()">Agregar</button>
-  
   <ul id="resultado"></ul>
   <script>
   const boton = document.getElementById("btnWsp");
   const textoOriginal = boton.innerText;
-  
   console.log("Estoy ejecutando el script 👀");
-	
   boton.addEventListener("click", function() {
     alert("Te estoy redirigiendo a WhatsApp 👀");
     window.open("https://wa.me/51931225177", "_blank");
   });
-  
   boton.addEventListener("mouseover", function() {
     boton.innerText = "Ahora cambié 😈";
   });
-
   boton.addEventListener("mouseout", function() {
     boton.innerText = textoOriginal;
   });
-  
   function cargarUsuarios() {
     fetch("https://backend-holamundo.onrender.com/usuarios")
       .then(res => res.json())
@@ -51,7 +41,6 @@
         .join("");
     });
   }
-
   function agregarUsuario() {
     const nombre = document.getElementById("nombre").value;
 
@@ -66,7 +55,6 @@
       cargarUsuarios(); // 🔥 refresca lista
     });
   }
-  
   function eliminarUsuario(id) {
   console.log("Intentando eliminar el usuario ", id);
   fetch(`https://backend-holamundo.onrender.com/usuarios/${id}`, {
@@ -81,9 +69,7 @@
     console.error("Error:", err);
 	});
   }
-
-  // 👉 carga inicial
-  cargarUsuarios();
+  cargarUsuarios(); // 👉 carga inicial
   </script>
 </body>
 </html>
