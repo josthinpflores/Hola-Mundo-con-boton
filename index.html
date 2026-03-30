@@ -69,7 +69,7 @@
   
   function eliminarUsuario(id) {
   console.log("Intentando eliminar el usuario ", id);
-  fetch("https://backend-holamundo.onrender.com/usuarios/${id}", {
+  fetch(`https://backend-holamundo.onrender.com/usuarios/${id}`, {
     method: "DELETE"
 	})
   .then(res => res.text())
